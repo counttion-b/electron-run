@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eeeae0"><title>电子快跑 · 独立试玩</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./standalone.mjs"></script>
+</head>
+<body data-mode="home">
+  <canvas id="track" aria-label="半圆柱导线跑道，拖动或点击跑道控制电子的位置"></canvas>
+  <section id="home-screen" class="screen home-screen">
+    <header class="home-header"><span class="back-link">独立试玩</span><span class="wordmark">LAMBDA PLAY</span><div id="identity" class="identity">本机试玩</div></header>
+    <div class="home-layout"><div class="intro">
+      <p class="eyebrow">30秒 · 一场关于碰撞的短跑</p>
+      <h1>电子<span>快跑</span><i aria-hidden="true">−</i></h1>
+      <p class="tagline">在导线里，跑出更低的电阻。</p>
+      <div class="intro-actions"><button id="start" class="primary">开始挑战 <span>→</span></button><button id="how" class="secondary">试一下操作</button></div>
+      <button id="direct" class="text-button skip-start">跳过教程，直接开始 →</button>
+      <div class="how-copy"><p><b>拖动</b>调整位置，或<b>点击</b>左右跑道。</p><p>碰撞会减速。看到箭头，留意电荷的横摆。</p></div>
+      <div class="home-meta"><button id="show-board" class="text-button">查看本机纪录 ↗</button><span id="best-label">每一局，都是新的跑道。</span></div>
+      <p id="connection" class="connection" role="status"></p>
+    </div><div class="hero-note" aria-hidden="true"><span class="small-electron">−</span><span>电场推动<br>碰撞减速</span></div></div>
+    <footer class="home-footer"><button id="sound" class="text-button" data-feedback="sound" aria-pressed="true" aria-label="关闭音效">声音 开</button><button id="vibration" class="text-button" data-feedback="vibration" aria-pressed="true" aria-label="关闭振动">振动 开</button><details><summary>电阻怎么计算？</summary><p>游戏电阻 R = 100 × 时间 ÷ 距离。平均前进速度越快，电阻越低。此处距离与电阻采用游戏标度。</p></details><span>拖动 / 点击 · 键盘 ← →</span></footer>
+  </section>
+  <section id="play-screen" class="screen play-screen" hidden>
+    <div class="game-hud"><div class="hud-score"><span class="hud-label">电阻</span><strong><span id="resistance">—</span><small> Ω</small></strong></div><div class="hud-time"><span id="time">30.0</span><small>s</small></div><button id="pause" class="round-button" aria-label="暂停游戏">Ⅱ</button></div>
+    <div class="time-line"><span id="time-progress"></span></div>
+    <div id="speed-state" class="speed-state" hidden><span id="speed-label">高速</span><i><b id="speed-fill"></b></i></div>
+    <div id="prompt" class="tutorial-prompt" role="status" hidden><span id="step-label"></span><h2 id="prompt-title"></h2><p id="prompt-copy"></p><button id="tutorial-next" class="primary small" hidden>下一步 →</button><button id="skip-tutorial" class="text-button">跳过教程</button></div>
+    <div id="countdown" class="countdown" aria-live="polite" hidden>3</div>
+    <div id="hit-label" class="hit-label" aria-hidden="true">碰撞 · 重新加速</div>
+    <div id="gesture-hint" class="gesture-hint">← 拖动，或点跑道 →</div>
+    <div id="pause-panel" class="pause-shade" hidden><div class="pause-card"><p class="eyebrow">短暂休息</p><h2>回来，接着跑。</h2><button id="resume" class="primary">继续 →</button><div class="feedback-settings"><button id="pause-sound" class="text-button" data-feedback="sound" aria-pressed="true" aria-label="关闭音效">声音 开</button><button id="pause-vibration" class="text-button" data-feedback="vibration" aria-pressed="true" aria-label="关闭振动">振动 开</button></div><button id="abandon" class="text-button">返回开始页</button></div></div>
+  </section>
+  <section id="result-screen" class="screen result-screen" hidden>
+    <header class="results-header"><button id="back-home" class="text-button">← 开始页</button><span class="wordmark">30 SECOND RUN</span></header>
+    <div class="results-layout"><section class="result-summary"><p id="result-kicker" class="eyebrow">30秒挑战完成</p><h2 id="result-title">这次的电阻</h2><div id="score-block"><div class="result-score"><span id="final-resistance">—</span><small> Ω</small></div><p id="record-comparison" class="record-comparison" hidden></p><div class="result-stats"><span><strong id="final-distance">—</strong>前进距离</span><span><strong id="final-collisions">—</strong>碰撞</span><span><strong id="final-streak">—</strong>最长无碰撞</span></div></div><p id="save-status" class="save-status" role="status"></p><button id="retry-save" class="text-button" hidden>重试保存成绩 ↻</button><div class="replay-actions"><button id="again" class="primary">再玩一次 <span>→</span></button><span>新的跑道，新的机会。</span></div></section><section class="ranking"><div class="ranking-heading"><div><p class="eyebrow">THIS BROWSER</p><h2>本机纪录</h2></div><button id="refresh-board" class="text-button" aria-label="刷新本机纪录">刷新 ↻</button></div><div id="personal" class="personal"></div><ol id="board" class="board-list"></ol><p class="ranking-note">仅保存当前浏览器的最佳纪录；换设备或清除浏览器数据后不会同步。</p></section></div>
+  </section>
+</body>
+</html>
